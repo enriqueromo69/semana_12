@@ -16,5 +16,7 @@ npm cache clean --force
 npm run watch
 
 #Credenciales para usal el email cambiar  por si correo
-  git config --global user.email "enriqueromo69@hotmail.com"
+  git config --global user.email enriqueromo69@hotmail.com
   git config --global user.name "Victor Roca"
+
+#En ubunto es necesario instalar visual studio code y tambien code-insiders
