@@ -2163,9 +2163,76 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      ape_nom: "",
+      dni: "",
+      celular: ""
+    };
+  },
+  methods: {
+    busca: function busca() {
+      var _this = this;
+
+      var TOKEN = "339e485b4dac237375a74c57bc7e8861b885c93d5f6558b2d2c9203237807bb3";
+      var BASEURL = "https://vemasystem.com/api/";
+      var ENDPOINT = "dni";
+      var dniB = {
+        dni: this.dni
+      };
+      axios.create({
+        baseURL: BASEURL,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + TOKEN
+        }
+      }).post(ENDPOINT, dniB).then(function (res) {
+        //ira la modificacion de los datos
+        _this.ape_nom = res.data.nombre_completo;
+        console.log(res.data);
+      });
+    },
+    guardar: function guardar() {
+      var me = this;
+      var url = "paciente-vue/registra"; //Ruta que hemos creado para enviar una tarea y guardarla
+
+      axios.post(url, {
+        //estas variables son las que enviaremos para que crear la tarea
+        ape_nom: this.ape_nom,
+        dni: this.dni,
+        celular: this.celular
+      }).then(function (response) {
+        me.getTasks(); //llamamos al metodo getTask(); para que refresque nuestro array y muestro los nuevos datos
+
+        me.clearFields(); //Limpiamos los campos e inicializamos la variable update a 0
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -2204,6 +2271,70 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      pacientes: []
+    };
+  },
+  methods: {
+    listar: function listar() {
+      var me = this;
+      var url = "/paciente-vue/lista";
+      axios.get(url).then(function (response) {
+        //creamos un array y guardamos el contenido
+        console.log(response.data);
+        me.pacientes = response.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.listar();
+    console.log("Component mounted." + this.pacientes);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PacienteComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PacienteComponent.vue?vue&type=script&lang=js& ***!
@@ -2213,6 +2344,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2274,7 +2412,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     guardar: function guardar() {
       var me = this;
-      var url = "paciente-vue/registra"; //Ruta que hemos creado para enviar una tarea y guardarla
+      var url = "/paciente-vue/registra"; //Ruta que hemos creado para enviar una tarea y guardarla
 
       axios.post(url, {
         //estas variables son las que enviaremos para que crear la tarea
@@ -38278,111 +38416,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Este es un Componente de Doctor")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    Yo soy un componente\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Este es un Componente")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    Yo soy un componente\n                "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PacienteComponent.vue?vue&type=template&id=7c701fb1&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PacienteComponent.vue?vue&type=template&id=7c701fb1& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "content" }, [
-          _c("div", { staticClass: "col-md-4" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "inputPassword4" } },
-              [_vm._v("DNI")]
-            ),
-            _vm._v(" "),
+          _c("div", { staticClass: " input-group  col-md-8" }, [
             _c("input", {
               directives: [
                 {
@@ -38393,7 +38431,7 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "number" },
+              attrs: { type: "text", placeholder: "Buscar por DNI " },
               domProps: { value: _vm.dni },
               on: {
                 input: function($event) {
@@ -38472,11 +38510,247 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", on: { click: _vm.guardar } },
-            [_vm._v("Guardado")]
-          )
+          _c("div", { staticClass: "input-group col-md-8" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.guardar } },
+              [_vm._v("Guardado")]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Este es un Componente")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _vm._v(
+                "\n                    Yo soy un componente\n                "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "content" }, [
+          _c("p", [_vm._v("Hola este es un componente solo de lista")]),
+          _vm._v(" "),
+          _c("table", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.pacientes, function(seleccion) {
+                return _c("tr", { key: seleccion.idpaciente }, [
+                  _c("td", [_vm._v(_vm._s(seleccion.dni))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(seleccion.ape_nom))])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("td", [_vm._v("Dni")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Ape Nombres")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PacienteComponent.vue?vue&type=template&id=7c701fb1&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PacienteComponent.vue?vue&type=template&id=7c701fb1& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "content" }, [
+          _c("div", { staticClass: " input-group  col-md-8" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.dni,
+                  expression: "dni"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", placeholder: "Buscar por DNI " },
+              domProps: { value: _vm.dni },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.dni = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.busca } },
+              [_vm._v("Buscar")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-8" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "inputEmail4" } },
+              [_vm._v("Apellidos y Nombres")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.ape_nom,
+                  expression: "ape_nom"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.ape_nom },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.ape_nom = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "inputPassword4" } },
+              [_vm._v("Celular")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.celular,
+                  expression: "celular"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.celular },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.celular = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group col-md-8" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.guardar } },
+              [_vm._v("Guardado")]
+            )
+          ])
         ])
       ])
     ])
@@ -50775,6 +51049,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('consulta', __webpack_require__(/*! ./components/ConsultaComponent.vue */ "./resources/js/components/ConsultaComponent.vue")["default"]);
 Vue.component('cliente', __webpack_require__(/*! ./components/ClienteComponent.vue */ "./resources/js/components/ClienteComponent.vue")["default"]);
+Vue.component('listpaciente', __webpack_require__(/*! ./components/ListpacienteComponent.vue */ "./resources/js/components/ListpacienteComponent.vue")["default"]);
 Vue.component('paciente', __webpack_require__(/*! ./components/PacienteComponent.vue */ "./resources/js/components/PacienteComponent.vue")["default"]);
 Vue.component('usuario', __webpack_require__(/*! ./components/UsuarioComponent.vue */ "./resources/js/components/UsuarioComponent.vue")["default"]);
 Vue.component('cita', __webpack_require__(/*! ./components/CitaComponent.vue */ "./resources/js/components/CitaComponent.vue")["default"]);
@@ -51246,6 +51521,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ListpacienteComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/ListpacienteComponent.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListpacienteComponent.vue?vue&type=template&id=bd0ae15a& */ "./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a&");
+/* harmony import */ var _ListpacienteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListpacienteComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListpacienteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ListpacienteComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListpacienteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ListpacienteComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListpacienteComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListpacienteComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ListpacienteComponent.vue?vue&type=template&id=bd0ae15a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListpacienteComponent.vue?vue&type=template&id=bd0ae15a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListpacienteComponent_vue_vue_type_template_id_bd0ae15a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

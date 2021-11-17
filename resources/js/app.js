@@ -23,6 +23,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('consulta', require('./components/ConsultaComponent.vue').default);
 
 Vue.component('cliente', require('./components/ClienteComponent.vue').default);
+
+
+Vue.component('listpaciente', require('./components/ListpacienteComponent.vue').default);
 Vue.component('paciente', require('./components/PacienteComponent.vue').default);
 Vue.component('usuario', require('./components/UsuarioComponent.vue').default);
 Vue.component('cita', require('./components/CitaComponent.vue').default);

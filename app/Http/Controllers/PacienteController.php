@@ -17,6 +17,18 @@ class PacienteController extends Controller
         //
         return view('pacientevue.index');
     }
+    public function registro()
+    {
+        //
+        return view('pacientevue.registro');
+    }
+
+    public function lista()
+    {
+        //
+        $paciente= Paciente::all();
+        return $paciente;
+    }
 
     /**
      * Show the form for creating a new resource.

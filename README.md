@@ -16,6 +16,8 @@ npm cache clean --force
 npm run watch
 
 #Credenciales para usal el email cambiar  por si correo
+  git config --global --edit
+  git config --global credential.helper store
   git config --global user.email enriqueromo69@hotmail.com
   git config --global user.name "Victor Roca"
 

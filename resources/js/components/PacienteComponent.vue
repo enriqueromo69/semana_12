@@ -3,15 +3,17 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="content">
-          <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">DNI</label>
-            <input type="number" v-model="dni" class="form-control" />
+
+          <div class=" input-group  col-md-8">
+            
+             <input type="text"  v-model="dni"  class="form-control" placeholder="Buscar por DNI ">
+  
             <button class="btn btn-primary" @click="busca">Buscar</button>
           </div>
 
+
           <div class="col-md-8">
-            <label for="inputEmail4" class="form-label"
-              >Apellidos y Nombres</label
+            <label for="inputEmail4" class="form-label" >Apellidos y Nombres</label
             >
             <input type="text" v-model="ape_nom" class="form-control" />
           </div>
@@ -20,7 +22,12 @@
             <input type="text" v-model="celular" class="form-control" />
           </div>
 
-          <button class="btn btn-primary"  @click="guardar">Guardado</button>
+          <div class="input-group col-md-8">
+             <button class="btn btn-primary"  @click="guardar">Guardado</button>
+          </div>
+
+
+         
         </div>
       </div>
     </div>
@@ -60,7 +67,7 @@ export default {
     },
     guardar() {
       let me = this;
-      let url = "paciente-vue/registra"; //Ruta que hemos creado para enviar una tarea y guardarla
+      let url = "/paciente-vue/registra"; //Ruta que hemos creado para enviar una tarea y guardarla
       axios
         .post(url, {
           //estas variables son las que enviaremos para que crear la tarea

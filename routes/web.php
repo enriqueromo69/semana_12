@@ -30,7 +30,8 @@ Route::resource('cliente-vue', 'ClienteController')->middleware('auth');
 Route::resource('usuario-vue', 'UsuarioController')->middleware('auth');
 
 
-
+Route::get('paciente-vue/registro', 'PacienteController@registro');
+Route::get('paciente-vue/lista', 'PacienteController@lista');
 Route::post('paciente-vue/registra', 'PacienteController@store');
 Route::resource('paciente-vue', 'PacienteController')->middleware('auth');
 

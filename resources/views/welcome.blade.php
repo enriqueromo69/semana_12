@@ -85,7 +85,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    AdminLTE Generator
+                    Sistema clinico profesional
                 </div>
 
                 <div class="links">
